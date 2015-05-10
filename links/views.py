@@ -13,7 +13,7 @@ class RedirectToView(RedirectView):
     def get_redirect_url(self, **kwargs):
         key = kwargs.get('key')
         try:
-            pk = int(Link.decode(key))
+            pk = int(Link.decode(str(key)))
         except ValueError:
             pk = None
 
