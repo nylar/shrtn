@@ -27,9 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SITE_URL = 'http://example.com/'
-
-
 # Application definition
 
 INSTALLED_APPS = (

@@ -11,8 +11,16 @@ class Link(models.Model):
     def encode(self):
         return urlsafe_b64encode(str(self.id))
 
-    def decode(self):
-        return int(urlsafe_b64decode(self.key))
+    @classmethod
+    def decode(cls, key):
+        # Values should be in 4 byte segments, otherwise an exception is thrown.
+        segment_size = len(key) % 4
+
+        if segment_size:
+            # Pad the key with '=' to make it a mutiple of 4.
+            key += '='*segment_size
+
+        return urlsafe_b64decode(key)
 
     def __unicode__(self):
         return self.key
