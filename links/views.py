@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.base import RedirectView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from links.forms import CreateLinkForm
 from links.models import Link
 
 
@@ -18,7 +19,7 @@ class LinkDecoderMixin(object):
 
 class CreateLinkView(CreateView):
     model = Link
-    fields = ['url']
+    form_class = CreateLinkForm
 
     def get_success_url(self):
         return reverse('link-details', kwargs={'key': self.object.key}) 
