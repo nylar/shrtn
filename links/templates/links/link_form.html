@@ -14,8 +14,17 @@
     </head>
     <body class="wrap">
         <form action="" method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Shorten Link" class="btn btn-green" />
+            {% if form.url.errors %}
+            <div class="msg msg-failure">
+                <ol>
+                {% for error in form.url.errors %}
+                    <li><strong>{{ error|escape }}</strong></li>
+                {% endfor %}
+                </ol>
+            </div>
+            {% endif %}
+            {{ form.url }}
+            <input type="submit" value="Shorten Link" class="btn btn-blue" />
         </form>
     </body>
 </html>

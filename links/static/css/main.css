@@ -5,6 +5,16 @@
     width: 50%;
 }
 
-input {
-    margin-bottom: 20px;
+input,
+.msg {
+    margin-bottom: 20px !important;
+}
+
+input[type="url"] {
+    width: 50%;
+}
+
+.msg {
+    margin: 0 auto;
+    width: 50%;
 }
