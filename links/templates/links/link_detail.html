@@ -12,7 +12,15 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/minimu.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
     </head>
-    <body class="wrap">
-        <a href="{{ object.url }}" class="btn btn-purple">Visit</a>
+    <body class="outer">
+        <div class="inner">
+            <div class="body">
+                Checking status&hellip;
+            </div>
+            <div class="actions">
+                <a href="v/" class="btn btn-blue">Visit Link</a>
+            </div>
+        </div>
+        <a href="/" class="btn btn-grey return-home">Shorten New Link</a>
     </body>
 </html>

@@ -12,8 +12,10 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/minimu.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
     </head>
-    <body class="wrap">
-        <form action="" method="post">{% csrf_token %}
+    <body class="outer">
+        <form action="" method="post" class="inner">
+            <div class="body">
+            {% csrf_token %}
             {% if form.url.errors %}
             <div class="msg msg-failure">
                 <ol>
@@ -24,7 +26,10 @@
             </div>
             {% endif %}
             {{ form.url }}
-            <input type="submit" value="Shorten Link" class="btn btn-blue" />
+            </div>
+            <div class="actions">
+                <input type="submit" value="Shorten Link" class="btn btn-blue" />
+            </div>
         </form>
     </body>
 </html>
