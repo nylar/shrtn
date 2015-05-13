@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load url_checker %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,12 +18,20 @@
     <body class="outer">
         <div class="inner">
             <div class="body">
-                <span data-url="{{ object.url }}"></span>
+                {% check object.url as is_reachable %}
+                {% if is_reachable %}
+                    <span class="label label-success">Reachable</span>
+                {% else %}
+                    <span class="label label-failure">Unreachable</span>
+                {% endif %}
             </div>
             <div class="actions">
                 <a href="v/" class="btn btn-blue">Visit Link</a>
+                {% if not is_reachable %}
+                <a class="btn btn-grey" href="http://webcache.googleusercontent.com/search?q=cache:{{ object.url }}">Cached URL</a>
+                {% endif %}
             </div>
         </div>
-        <a href="/" class="btn btn-grey return-home">Shorten New Link</a>
+        <a href="/" class="btn btn-green return-home">Shorten New Link</a>
     </body>
 </html>
